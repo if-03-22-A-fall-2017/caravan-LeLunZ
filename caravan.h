@@ -14,7 +14,9 @@
 #define CARAVAN_H
 
 #include "pack_animal.h"
+#include "general.h"
 
+typedef struct Node* nodebegin;
 /**
 * Initialisiert eine Karawane. D. h., dass es alle in der Karawane befindlichen Tiere aus der
 * Karawane entfernt und die Karawane als leer kennzeichnet.
@@ -40,13 +42,13 @@ void add_pack_animal(Caravan caravan, PackAnimal animal);
 /**
 * Entfernt ein Packtier aus einer Karawane.
 */
-void remove_pack_animal(Caravan caravan, PackAnimal animal);
+void remove_pack_animal(Caravan caravan, PackAnimal animal, struct Node* test= 0);
 
 /**
 * @return Die Geschwindigkeit einer Karawane. Diese richtet sich nach der Geschwindigkeit des
 * langsamsten Tiers in der Karawane.
 */
-int get_caravan_speed(Caravan caravan);
+int get_caravan_speed(Caravan caravan, struct Node* now = 0);
 
 /**
 * @return Die Gesamtanzahl der Ballen einer Karawane.
@@ -57,7 +59,7 @@ int get_caravan_load(Caravan caravan);
 * Entl&auml;dt die gesamte Karawane. D.h. es wird jedes Tier in der Karawane von seinen Ballen
 * befreit.
 */
-void unload(Caravan caravan);
+void unload(Caravan caravan, struct Node* now = 0);
 
 /**
 * Verteilt die Last der Ballen so auf die einzelnen Tiere, dass die Geschwindigkeit der Karawane

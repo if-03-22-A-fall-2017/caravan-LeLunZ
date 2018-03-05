@@ -10,6 +10,7 @@
  * <your description here>
  *-----------------------------------------------------------------------------
 */
+#include <cstdio>
 #include "general.h"
 #include "caravan.h"
 
@@ -23,11 +24,9 @@
  TEST(create_caravan)
  {
    init_free_list();
-
    Caravan gobi_express = new_caravan();
    ASSERT_TRUE(gobi_express != 0, "gobi_express expected to be NOT 0");
    ASSERT_EQUALS(0, get_length(gobi_express));
-
    delete_caravan(gobi_express);
    ASSERT_TRUE(get_free_list()[0] == gobi_express, "gobi_express expected to be in free list");
  }
@@ -40,18 +39,14 @@
 TEST(add_pack_animal)
 {
   init_free_list();
-
   Caravan gobi_express = new_caravan();
   add_pack_animal(gobi_express, 0);
   ASSERT_EQUALS(0, get_length(gobi_express));
-
   PackAnimal willi = new_camel("Willi", 15);
   PackAnimal mitzi = new_horse("Mitzi", 40);
-
   add_pack_animal(gobi_express, willi);
   ASSERT_EQUALS(1, get_length(gobi_express));
   ASSERT_TRUE(get_caravan(willi) == gobi_express, "Expected Willi's caravan to be gobi express");
-
   add_pack_animal(gobi_express, mitzi);
   ASSERT_EQUALS(2, get_length(gobi_express));
   ASSERT_TRUE(get_caravan(mitzi) == gobi_express, "Expected Mitzi's caravan to be gobi express");
@@ -81,21 +76,17 @@ TEST(remove_pack_animal)
 
   add_pack_animal(gobi_express, willi);
   add_pack_animal(gobi_express, mitzi);
-
   remove_pack_animal(gobi_express, franzi);
   ASSERT_EQUALS(2, get_length(gobi_express));
   ASSERT_EQUALS(0, get_free_list_length());
-
 	remove_pack_animal(gobi_express, willi);
-  ASSERT_EQUALS(1, get_length(gobi_express));
+    ASSERT_EQUALS(1, get_length(gobi_express));
   ASSERT_EQUALS(1, get_free_list_length());
 	ASSERT_TRUE(get_caravan(willi) == 0, "Willi's caravan expected to be 0");
-
 	remove_pack_animal(gobi_express, mitzi);
   ASSERT_EQUALS(0, get_length(gobi_express));
   ASSERT_EQUALS(2, get_free_list_length());
 	ASSERT_TRUE(get_caravan(mitzi) == 0, "Mitzi's caravan expected to be 0");
-
   delete_caravan(gobi_express);
   delete_animal(willi);
   delete_animal(mitzi);
@@ -141,10 +132,9 @@ TEST(caravan_load)
 
   remove_pack_animal(gobi_express, mitzi);
   ASSERT_EQUALS(10, get_caravan_load(gobi_express));
-
-  delete_caravan(gobi_express);
-  delete_animal(willi);
-  delete_animal(mitzi);
+    delete_caravan(gobi_express);
+    delete_animal(willi);
+    delete_animal(mitzi);
 }
 
 /******************************************************************************
@@ -163,7 +153,6 @@ TEST(unload)
   PackAnimal mitzi = new_camel("Mitzi", 40);
   add_load(mitzi, 3);
   add_pack_animal(gobi_express, mitzi);
-
 	unload(gobi_express);
   ASSERT_EQUALS(0, get_load(willi));
   ASSERT_EQUALS(0, get_load(mitzi));
@@ -246,7 +235,6 @@ TEST(change_caravan)
 TEST(optimize_load)
 {
   Caravan gobi_express = new_caravan();
-
   PackAnimal willi = new_camel("Willi", 15);
   PackAnimal mitzi = new_horse("Mitzi", 35);
   PackAnimal habschi = new_camel("Habschi", 16);
@@ -267,7 +255,7 @@ TEST(optimize_load)
   ASSERT_EQUALS(4, get_actual_speed(sissi));
   ASSERT_EQUALS(4, get_caravan_speed(gobi_express));
 
-	optimize_load(gobi_express);
+	//optimize_load(gobi_express);
 	// assert(caravan_speed(&gobi_express) == 10, tc, "Caravan speed expected to be 10");
 	// assert(actual_speed(&willi) == 10, tc, "Willi's speed expected to be 10");
 	// assert(actual_speed(&mitzi) == 15, tc, "Mitzi's speed expected to be 15");

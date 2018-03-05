@@ -13,6 +13,7 @@
 #ifndef PACK_ANIMAL_H
 #define PACK_ANIMAL_H
 
+#include <stdlib.h>
 typedef struct CaravanImplementation* Caravan;
 
 typedef enum {Camel, Horse} AnimalType;
