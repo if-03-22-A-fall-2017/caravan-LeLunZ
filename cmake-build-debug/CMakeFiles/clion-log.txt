@@ -1,4 +1,4 @@
-/home/lunz/Programme/clion-2017.3.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lunz/Downloads/caravan-ivonnegattringer
+/home/lunz/Programme/clion-2017.3.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lunz/Downloads/caravan-LeLunZ
 -- The C compiler identification is GNU 6.4.0
 -- The CXX compiler identification is GNU 6.4.0
 -- Check for working C compiler: /usr/bin/cc
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/lunz/Downloads/caravan-ivonnegattringer/cmake-build-debug
+-- Build files have been written to: /home/lunz/Downloads/caravan-LeLunZ/cmake-build-debug

@@ -29,11 +29,12 @@ struct CaravanImplementation{
 };
 Caravan new_caravan()
 {
-    Caravan x = (Caravan)new CaravanImplementation();
+    Caravan x = (Caravan) malloc(sizeof(CaravanImplementation));
     x->length = 0;
     x->end = 0;
     x->begin = 0;
     x->speed = 999;
+    x->load = 0;
     return x;
 }
 int get_length(Caravan caravan)
@@ -132,4 +133,9 @@ int get_caravan_speed(Caravan caravan,struct Node* now = 0)
     if(caravan->speed> get_actual_speed(beg->animal))caravan->speed = get_actual_speed(beg->animal);
     if(now != 0 && beg->next == 0)return caravan->speed;
     return get_caravan_speed(caravan,beg);
+}
+
+void optimize_load(Caravan caravan){
+
+    return;
 }
